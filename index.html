@@ -8,7 +8,61 @@
    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Document</title>
 </head>
+<header>
+    <h1>Code of the Day</h1>
+    <h2><strong>Le quotidien des developpeurs en herbe!</strong></h2>
+    <p>Bienvennue sur le portail d'inscription à notre liste d'abonnement <br>
+      Ici vous pourrez demander à ce que votre journal préfèré vous soit livré chaque jour <br>
+      Dés que nos equipes recevront votre demande, vous serz contacter par courrier électronique.
+    </p>
+</header>
+ 
 <body>
+    <main>
+        <h1><strong>Formulaire d'inscription</strong></h1>
+        <fieldset class="identité">
+            <legend>Identité</legend>
+            <div class="button">
+                <input type="radio" id="radioButton1" name="genre" value="Monsieur" checked />
+                <label for="chek-madame">Madame</label>
+                <input type="radio" id="radioButton2" name="genre" value="Madame" />
+                <label for="chek-monsieur">Monsieur</label>
+            </div>
+            <form>
+                <p><label>Nom: <input></label></p>
+                <p><label>prenom: <input></label></p>
+                <p><label>Email: <input type="Email"></label></p>
+
+            </form>
+
+        </fieldset>
+        <fieldset class="adresselivr">
+            <legend>Adresse de Facturation</legend>
+            <form>
+                <p><label>Rue: <input></label></p>
+                <p><label>ville: <input></label></p>
+                <p><label>Code postale: <input></label></p>
+
+            </form>
+
+        </fieldset>
+        <fieldset class="adressefact">
+            <legend>Identité</legend>
+           
+            <form>
+                <p><label>Rue: <input></label></p>
+                <p><label>Ville: <input></label></p>
+                <p><label>Code postale: <input></label></p>
+
+            </form>
+
+        </fieldset>
+        <button class="valider" type="button">Valider</button>
+
+    </main>
+    <footer>
+        <p>Alain ORLUK- @Code of teh day-2023</p>
+    </footer>
     
 </body>
 </html>

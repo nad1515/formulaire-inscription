@@ -1,0 +1,14 @@
+
+* {
+    box-sizing: border-box;
+
+}
+header{
+    
+  border: 1px $main-couleur;
+  background-color: gray; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  
+}
