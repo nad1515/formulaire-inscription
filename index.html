@@ -4,57 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <scrip type="module" src="./assets/js/script.js" defer ></script>
-   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./assets/js/script.js" defer ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Document</title>
 </head>
-<header>
-    <h1>Code of the Day</h1>
-    <h2><strong>Le quotidien des developpeurs en herbe!</strong></h2>
-    <p>Bienvennue sur le portail d'inscription à notre liste d'abonnement <br>
-      Ici vous pourrez demander à ce que votre journal préfèré vous soit livré chaque jour <br>
-      Dés que nos equipes recevront votre demande, vous serz contacter par courrier électronique.
-    </p>
-</header>
+
  
 <body>
+    <header>
+        <h1>Code of the Day</h1>
+        <h2><strong>Le quotidien des developpeurs en herbe!</strong></h2>
+        <p>Bienvennue sur le portail d'inscription à notre liste d'abonnement <br>
+          Ici vous pourrez demander à ce que votre journal préfèré vous soit livré chaque jour <br>
+          Dés que nos equipes recevront votre demande, vous serz contacter par courrier électronique.
+        </p>
+    </header>
+     
     <main>
         <h1><strong>Formulaire d'inscription</strong></h1>
         <fieldset class="identité">
             <legend>Identité</legend>
             <div class="button">
                 <input type="radio" id="radioButton1" name="genre" value="Monsieur" checked />
-                <label for="chek-madame">Madame</label>
+                <label for="radioButton1">Madame</label>
                 <input type="radio" id="radioButton2" name="genre" value="Madame" />
-                <label for="chek-monsieur">Monsieur</label>
+                <label for="radioButton2">Monsieur</label>
             </div>
-            <form>
-                <p><label>Nom: <input></label></p>
-                <p><label>prenom: <input></label></p>
-                <p><label>Email: <input type="Email"></label></p>
+            <div>
+                <p><label for="nom">Nom: <input type="text" id="nom"></label></p>
+                <p><label for="prenom">Prenom: <input type="text" id="prenom"></label></p>
+                <p><label for="mail">Email: <input type="text" id="mail"></label></p>
 
-            </form>
+            </div>
 
         </fieldset>
-        <fieldset class="adresselivr">
+        <fieldset class="adresseFact">
             <legend>Adresse de Facturation</legend>
-            <form>
-                <p><label>Rue: <input></label></p>
-                <p><label>ville: <input></label></p>
-                <p><label>Code postale: <input></label></p>
+            <div class="facturation ">
+                <p><label for="rue">Rue: <input type="text" id="rue"></label></p>
+                <p><label for="ville">ville: <input type=" text" id="ville"></label></p>
+                <p><label for="code">Code postale: <input type="text" id="code"></label></p>
 
-            </form>
+            </div>
 
         </fieldset>
-        <fieldset class="adressefact">
-            <legend>Identité</legend>
+        <fieldset class="adresseLivr">
+            <legend>Adresse de livraison</legend>
            
-            <form>
-                <p><label>Rue: <input></label></p>
-                <p><label>Ville: <input></label></p>
-                <p><label>Code postale: <input></label></p>
+            <div class="livraison">
+                <p><label for="rue">Rue: <input type="text" id="rue1"></label></p>
+                <p><label for="ville">Ville: <input type="text" id="ville1"></label></p>
+                <p><label for="code">Code postale: <input type="texe" id="code1"></label></p>
 
-            </form>
+            </div>
 
         </fieldset>
         <button class="valider" type="button">Valider</button>
