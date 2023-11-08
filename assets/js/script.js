@@ -1,85 +1,53 @@
 console.log("script");
-let url = "https://api-adresse.data.gouv.fr/search/?q=${query}";
 
 
-// let adresseInput = document.getElementById("rue");
-// const query = adresseInput.value;
-// console.log("adresseInput.value : ", adresseInput.value);
-// //"54 boulevard Laver" -> "54+boulevard+Laveran"
+let adresseInput = document.getElementById("rue")
 
-// // let query = "54 boulevard Lave";
-// let mot = query.split(' ').join('+');
-// console.log("mot", mot);
-// let datasAxios = await axiosTest();
-// console.log("Datas via Axios : ", datasAxios);
-// async function axiosTest () {
-// const response = await axios.get(`https://api-adresse.data.gouv.fr/search/?q=${query}`);
-//     return response.data;
-// }
-
- 
-// document.querySelector("#rue").addEventListener("input", function(){
+let urlRecherche ;
+let result;
+let listAdresse = document.querySelector("ul");
+let adresseChoisie ;
+let urlApi = `https://api-adresse.data.gouv.fr/search/?q=` ;
+const datasFetch = async () => {
+    const res = await fetch(urlRecherche);
+    result = await res.json();
+    console.log("result : ", result);
     
-
-// })
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const rueInput = document.getElementById("rue");
-    const resultaAdresse = document.getElementById("resultaAdresse");
-    const villeInput = document.getElementById("ville");
-    const codeInput = document.getElementById("code");
+for (let index = 0; index < result.features.length ; index++){
+  let listRecherche = document.createElement("li");
+  listRecherche.classList.add("list-rue");
+  listRecherche.textContent = result.features[index].properties.label;
+  listAdresse.appendChild(listRecherche);
+  listAdresse.style.listStyleType = "none";
+  listAdresse.style.cursor = "pointer";
+} 
   
-    rueInput.addEventListener("input", () => {
-      const query = rueInput.value;
-      console.log("rueInput.value : ", rueInput.value);
-       let mot = query.split(' ').join('+');
-      if (query.length >= 3) {
-        fetch(`https://api-adresse.data.gouv.fr/search/?q=${query}`)
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error("Erreur de réseau");
-            }
-            return response.json();
-          })
-          .then((data) => {
-            const addresses = data.features;
-  
-            if (addresses.length > 0) {
-                let addressList = document.createElement("ul");
-                addresses.forEach(address => {
-                    let ListItem = document.createElement("li");
-                    ListItem.textContent = address.fullAddress;
-                    ListItem.addEventListener("click",()=>{
-                        document.getElementById("ville").value = address.city;
-                        document.getElementById("code").value = address.postalCode;
-                         document.getElementById("adresseId").value = address.id;
-                        resultaAdresse.innerHTML = "";
-                        
-                    })
-                    addressList.appendChild(ListItem);
-                });
-                resultaAdresse.innerHTML = "";
-                resultaAdresse.appendChild(addressList);
-            //   const address = addresses[0].properties;
-  
-            //   villeInput.value = address.city;
-            //   codeInput.value = address.postcode;
-            //   resultaAdresse.innerHTML = "";
-            } else {
-                
-            //   villeInput.value = "";
-            //   codeInput.value = "";
-             resultaAdresse.innerHTML = "Aucune adresse trouvée.";
-            }
-          })
-          .catch((error) => {
-            console.error("Erreur lors de la requête API : ", error);
-          });
-      } else {
-        resultaAdresse.innerHTML = "";
-        // villeInput.value = "";
-        // codeInput.value = "";
-      }
-    });
+}
+
+  document.querySelector("#rue_fact").addEventListener("input", (eventText)=>{
+    listAdresse.innerHTML = "";
+    const query = eventText.target.value;
+    console.log("query", query);
+    let mot = query.split(' ').join('+');
+console.log("mot", mot);
+  urlRecherche = urlApi + mot;
+  console.log(urlRecherche);
+    if (mot.length > 4){
+      datasFetch()
+    }
 })
+listAdresse.addEventListener("click", (eventClick)=>{
+  listAdresse.innerHTML = "";
+  console.log(eventClick.target.innerText);
+adresseChoisie = eventClick.target.innerText;
+ for(let i=0; i< result.features.length; i++){
+   if (adresseChoisie == result.features[i].properties.label){
+    document.querySelector("#rue_fact").value =result.features[i].properties.name; 
+     document.querySelector("#ville_fact").value = result.features[i].properties.city; 
+     document.querySelector("#code_fact").value = result.features[i].properties.postcode; 
+   }
+
+
+ }
+})
+
